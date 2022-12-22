@@ -1,13 +1,20 @@
-# Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
-# Пример:
-# - A (-3,-6); B (-2,-1) -> 5,09
+# Реализуйте алгоритм перемешивания списка. Без функции shuffle из модуля random.
 
+from random import randint
 
-ax = float(input('Введите координаты точки a по оси x:'))
-ay = float(input('Введите координаты точки a по оси y:'))
-bx = float(input('Введите координаты точки b по оси x:'))
-by = float(input('Введите координаты точки b по оси y:'))
+def list(n):
+    list = []
+    for i in range(n):
+        list.append(randint(-n, n))
+    return list
 
-import math
-distans = math.sqrt((ax-bx)**2+(ay-by)**2)
-print(f'Растояние между точкой A до точки B = {distans}' )
+n = int(input('Введите число чтобы указать число элементов: '))
+numbers = list(n)
+print(numbers)
+for i in range (len(numbers)):
+    random_num = randint(i, n-1)
+    temp = numbers[i]
+    numbers[i] = numbers[random_num]
+    numbers[random_num] = temp
+
+print(numbers)
