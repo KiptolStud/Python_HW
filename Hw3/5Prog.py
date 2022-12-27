@@ -1,20 +1,19 @@
-# Реализуйте алгоритм перемешивания списка. Без функции shuffle из модуля random.
+# Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
 
-from random import randint
+n = int(input('Введите число: '))
 
-def list(n):
-    list = []
-    for i in range(n):
-        list.append(randint(-n, n))
-    return list
+def get_fibonacci(n):
+    fibo_nums = []
+    a, b = 1, 1
+    for i in range(n-1):
+        fibo_nums.append(a)
+        a, b = b, a + b
+    a, b = 0, 1
+    for i in range (n):
+        fibo_nums.insert(0, a)
+        a, b = b, a - b
+    return fibo_nums
 
-n = int(input('Введите число чтобы указать число элементов: '))
-numbers = list(n)
-print(numbers)
-for i in range (len(numbers)):
-    random_num = randint(i, n-1)
-    temp = numbers[i]
-    numbers[i] = numbers[random_num]
-    numbers[random_num] = temp
-
-print(numbers)
+fibo_nums = get_fibonacci(n)
+print(get_fibonacci(n))
+print(fibo_nums.index(0))
