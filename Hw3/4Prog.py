@@ -1,17 +1,19 @@
-# Задайте список из N элементов, заполненных числами из промежутка [-N, N]. Найдите произведение элементов на указанных позициях. 
-# Позиции хранятся в файле file.txt в одной строке одно число.
+# Задайте список из произвольных вещественных чисел, количество задаёт пользователь.
+# Напишите программу, которая найдёт разницу между максимальным и минимальным значением дробной части элементов.
 
-from random import randint
+from random import uniform
 
-def list(n):
-    list = []
-    for i in range(n):
-        list.append(randint(-n, n))
-    return list
+def get_real_nums (n, frst, last):
+    return [round(uniform(frst,last), 2) for i in range(n)]
 
-n = int(input('Введите число N: '))
-numbers = list(n)
-print(numbers)
-x = open('file.txt','r')
-result = numbers[int(x.readline())] * numbers[int(x.readline(2))]
-print(result)
+def find_diff(mynums):
+    nums = [round(x - int(x), 2) for x in (mynums)]
+    return max(nums) - min(nums)
+
+n = 5
+frst = 1
+last = 10
+mynums = get_real_nums(n, frst, last)
+
+print (mynums)
+print(find_diff(mynums))
