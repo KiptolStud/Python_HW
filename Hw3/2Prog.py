@@ -1,20 +1,19 @@
-# Напишите программу, которая принимает на вход число N и выдает набор произведений чисел от 1 до N.
+# Напишите программу, которая найдёт произведение пар чисел списка.
+# Парой считаем первый и последний элемент, второй и предпоследний и т.д.
 
-# Пример:
+from random import randint
+import math
 
-# - пусть N = 4, тогда [ 1, 2, 6, 24 ] (1, 1*2, 1*2*3, 1*2*3*4)
-# - 4 -> [1, 2, 6, 24]
-# - 6 -> [1, 2, 6, 24, 120, 720]
+def get_numbers(n, frst, last):
+    return [randint(frst, last) for i in range(n)]
 
+def mult_pairs(mylist):
+    return [mylist[i] * mylist[-i - 1] for i in range(math.ceil(len(mylist)/2))]
 
+n = 9
+frst = 1
+last = 10
 
-
-
-N = int(input('Введите число '))
-
-f = 1
-for i in range(N):
-    i = i + 1
-    f = i * f
-    
-    print(f, end=" ")
+mylist = get_numbers(n, frst, last)
+print(mylist)
+print(mult_pairs(mylist))
