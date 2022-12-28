@@ -1,8 +1,8 @@
 # Задайте последовательность чисел. Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности в том же порядке.
-
+n = int(input('Введите число: '))
 import random
 
-def fill_number_list(n=7, min=0, max=10) -> list:
+def fill_number_list(n, min=0, max=10) -> list:
     number_list = [random.randint(min, max)]
     for i in range (1, n):
         number_list.append(random.randint(min, max)) 
@@ -18,7 +18,7 @@ def unique_values_list(user_list) -> list:
                 new_list.append(user_list[i])
     return new_list
 
-source_list = fill_number_list(10, 0, 10)
+source_list = fill_number_list(n, 0, 10)
 unique_list = unique_values_list(source_list)
 print(f'{source_list} ->')
 print(unique_list)
